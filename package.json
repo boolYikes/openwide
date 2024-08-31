@@ -1,7 +1,9 @@
 {
   "name": "openwide",
+  "publisher": "soditout",
   "displayName": "Openwide",
   "description": "It enlarges the terminal window lest you get the \"can't gpg sign\" message during commits",
+  "repository": "https://github.com/boolYikes/openwide",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.92.0"
@@ -15,7 +17,7 @@
     "commands": [
       {
         "command": "openwide.gitSign",
-        "title": "Commits with sign"
+        "title": "goodsign"
       }
     ]
   },

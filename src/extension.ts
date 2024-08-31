@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { exec } from 'child_process';
+import { error } from 'console';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -11,6 +12,11 @@ export function activate(context: vscode.ExtensionContext) {
 			return ;
 		}
 
+		let workingDir = await vscode.window.showInputBox({
+			placeHolder: 'Your working directory: full, absolute path.',
+			prompt: 'Working directory'
+		});
+		workingDir = (workingDir + '').replace('undefined', '').replace(/"/g, '\\"');
 		let commitMessage = await vscode.window.showInputBox({
 			placeHolder: 'Enter your message or leave it be.',
 			prompt: 'Commit message'
@@ -21,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.executeCommand('workbench.action.terminal.focus');
 		vscode.commands.executeCommand('workbench.action.toggleMaximizedPanel');
 
-		runGitWithSign(commitMessage)
+		runGitWithSign(workingDir, commitMessage)
 			.then(() => {
 				if (!wasTerminalVisible) {
 					vscode.commands.executeCommand('workbench.action.closePanel');
@@ -39,10 +45,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 export function deactivate() {}
 
-function runGitWithSign(commitMessage: string): Promise<void> {
+function runGitWithSign(workingDir: string, commitMessage: string): Promise<void> {
 	return new Promise((resolve, reject) => {
-		const command = `git commit -S -m "${commitMessage}"`;
-
+		const cd = `cd "${workingDir}"`;
+		const command = `${cd} && git commit -S -m "${commitMessage}"`;
 		const gitProcess = exec(command, (error, stdout, stderr) => {
 			if (error) {
 				reject(error.message);

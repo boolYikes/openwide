@@ -1,10 +1,14 @@
 # openwide README
 
+This is a WIP!!!
+
 Automatic resizing of the terminal to facilitate git sign password tty.
 
 ## Features
 
-No need for further instructions! Just hit the ctrl + shift + p and use gitSign
+No need for further instructions! 
+Just hit the ctrl + shift + p 
+and use "goodSign"
 
 ## Requirements
 
