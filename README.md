@@ -21,7 +21,7 @@ Automatic resizing of the terminal to facilitate git sign password tty.
 
 ## Requirements
 
-TODO
+TOOOODOOO
 
 ## Extension Settings
 
