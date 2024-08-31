@@ -6,9 +6,18 @@ Automatic resizing of the terminal to facilitate git sign password tty.
 
 ## Features
 
-No need for further instructions! 
-Just hit the ctrl + shift + p 
-and use "goodSign"
+1. Add changes using "git add"
+2. Hit the ctrl + shift + p 
+3. Use "goodSign"
+4. Enter project path
+5. Enter commit message
+6. Done!
+
+## TODO
+
+- Do "git add ." automatically
+- Get path
+- Resize upon errors
 
 ## Requirements
 
@@ -23,9 +32,11 @@ TODO
 Not yet tested
 
 ## Release Notes
-
-1st release
-
-### 1.0.0
+### 0.0.1
+- First release
+### 0.0.2
+- Fixed path issue
+### 0.0.3
+- Fixed no delay issue
 
 Initial release of OpenWide

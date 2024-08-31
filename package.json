@@ -4,7 +4,7 @@
   "displayName": "Openwide",
   "description": "It enlarges the terminal window lest you get the \"can't gpg sign\" message during commits",
   "repository": "https://github.com/boolYikes/openwide",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.92.0"
   },

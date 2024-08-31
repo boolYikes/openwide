@@ -27,6 +27,8 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.executeCommand('workbench.action.terminal.focus');
 		vscode.commands.executeCommand('workbench.action.toggleMaximizedPanel');
 
+		await delay(1000);
+		
 		runGitWithSign(workingDir, commitMessage)
 			.then(() => {
 				if (!wasTerminalVisible) {
@@ -37,6 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
 			})
 			.catch((err) => {
 				vscode.window.showErrorMessage(`Git commit failed: ${err}`);
+				// prolly need the togglemax code here too
 			});
 	});
 
@@ -44,6 +47,10 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {}
+
+function delay(milsec: number): Promise<void> {
+	return new Promise(resolve => setTimeout(resolve, milsec));
+}
 
 function runGitWithSign(workingDir: string, commitMessage: string): Promise<void> {
 	return new Promise((resolve, reject) => {
