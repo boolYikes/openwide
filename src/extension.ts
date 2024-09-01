@@ -54,9 +54,8 @@ function delay(milsec: number): Promise<void> {
 
 function runGitWithSign(workingDir: string, commitMessage: string): Promise<void> {
 	return new Promise((resolve, reject) => {
-		const cd = `cd "${workingDir}"`;
-		const command = `${cd} && git commit -S -m "${commitMessage}"`;
-		const gitProcess = exec(command, (error, stdout, stderr) => {
+		const command = `git commit -S -m "${commitMessage}"`;
+		const gitProcess = exec(command, { cwd: workingDir }, (error, stdout, stderr) => {
 			if (error) {
 				reject(error.message);
 				return;
